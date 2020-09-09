@@ -1,0 +1,216 @@
+<!-- =================================
+
+CS50x project
+All Rights Reserved © 2020 Tooba Rahimnia
+
+================================= //-->
+
+<!DOCTYPE html>
+<html id="html">
+    <head>
+
+        <title>Daily Dash</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+        <link rel="shortcut icon" type="image/jpg"/>
+        <meta charset="utf-8" />
+
+    </head>
+
+    <body>
+
+
+
+<!--    /* =================================. -->
+<!--          Checking the setting bar        -->
+<!--    ====================================*/-->
+    	<svg class="settings-wheel" id="settings-wheel" ... xmlns="http://www.w3.org/2000/svg"
+		    xmlns:xlink="http://www.w3.org/1999/xlink"
+		    version="1.1" x="0px" y="0px"
+		    viewBox="0 0 100 100"
+		    enable-background="new 0 0 100 100"
+		    xml:space="preserve">
+			<path d="M84.579,56.107L83,55.196c-1.878-1.084-3-3.026-3-5.196s1.122-4.112,3-5.196l1.579-0.911  c4.307-2.489,5.781-7.986,3.294-12.294l-3-5.197c-2.481-4.299-7.997-5.774-12.294-3.294L71,24.018c-1.879,1.087-4.124,1.085-6,0.001  c-1.878-1.085-3-3.028-3-5.196V17c0-4.963-4.037-9-9-9h-6c-4.963,0-9,4.037-9,9v1.824c0,2.168-1.122,4.11-3,5.196  c-1.878,1.084-4.122,1.085-6-0.001l-1.579-0.911c-4.295-2.48-9.812-1.005-12.294,3.294l-3,5.197  c-2.486,4.308-1.013,9.806,3.294,12.294L17,44.804c1.878,1.084,3,3.026,3,5.196s-1.122,4.112-3,5.196l-1.579,0.911  c-4.307,2.488-5.781,7.986-3.294,12.294l3,5.197c2.483,4.298,8,5.776,12.294,3.294L29,75.982c1.878-1.088,4.122-1.084,6-0.001  c1.878,1.085,3,3.028,3,5.196V83c0,4.963,4.037,9,9,9h6c4.963,0,9-4.037,9-9v-1.824c0-2.168,1.122-4.11,3-5.196  c1.876-1.083,4.121-1.087,6,0.001l1.579,0.911c4.296,2.479,9.813,1.003,12.294-3.294l3-5.197  C90.36,64.093,88.887,58.596,84.579,56.107z M50,65c-8.271,0-15-6.729-15-15s6.729-15,15-15s15,6.729,15,15S58.271,65,50,65z"></path>
+	   	</svg>
+
+		<div class="update-notification" id="update-notification">
+		</div>
+
+<!--    /* =================================. -->
+<!--            Greeting and compliment       -->
+<!--    ====================================*/-->
+        <div class="greeting-container">
+        	<div class="greeting-and-name">
+        		<h1><span class="greeting" id="greeting"></span> <span class="name" id="name" ></span></h1>
+			</div>
+        	<div class="compliment-container">
+				<h2><span class="msgDiv" id="msgDiv"></span></h2>
+			</div>
+		</div>
+
+
+
+<!--   /* =================================. -->
+<!--                To Do list               -->
+<!--   ====================================*/-->
+		<div class="to-do-list" id="to-do-list">
+  			<h2 class="to-do-list-header">To Do Today</h2>
+  			<div class="task-list">
+				<ul class="ul-task-list" id="ul-task-list">
+				</ul>
+			</div>
+
+			<div class="input-and-add">
+				<form class="input-and-add-form" id="input-and-add-form" action="#">
+					<input class="task-input" type="text" id="myInput" placeholder="Please type a new task here...">
+					<button type="submit" class="addBtn">Add</button>
+				</form>
+			</div>
+		</div>
+
+
+<!--    /* =================================. -->
+<!--                   Time                   -->
+<!--    ====================================*/-->
+
+		<p><span class="datetime" id="datetime"></span></p>
+
+<!--    /* =================================. -->
+<!--               Inside Setting Bar         -->
+<!--    ====================================*/-->
+        <div class="settings" id="settings">
+			<div class="settings-container">
+				<form class="name-form" id="name-form" action="#">
+					<input class="name-input" type="text" id="name-input" placeholder="Please type your name...">
+				    <button type="submit" class="nameBtn">Add</button>
+			    </form>
+
+			  	<span class="select-theme-title">Standard Themes:</span>
+			  	<form class="select-theme" id="select-theme" name="select-order">
+					<div class="gallery-container-permanent">
+
+
+						<div class="gallery-container-row">
+							<input class="radio-button" value="library" type="radio" id="library" name="theme" />
+						  	<label class="theme-label"  for="library">
+						  		<img src="img/library.jpg" class="theme-image" />
+						  		Sienna
+					  			</label>
+
+							<input class="radio-button" value="newzealand" type="radio" id="newzealand" name="theme" />
+							<label class="theme-label" for="newzealand">
+								<img src="img/newzealand.jpg" class="theme-image" />
+								Light Sea Green
+							</label>
+
+							<input class="radio-button" value="wave" type="radio" id="wave" name="theme" />
+							<label class="theme-label" for="wave">
+								<img src="img/wave.jpg" class="theme-image" />
+								Yellow
+							</label>
+
+							<input class="radio-button" value="fruit" type="radio" id="fruit" name="theme" />
+							<label class="theme-label" for="fruit">
+								<img src="img/fruit.jpg" class="theme-image" />
+								Orange
+							</label>
+						</div>
+
+
+						<div class="gallery-container-row">
+							<input class="radio-button" value="puppies" type="radio" id="puppies" name="theme" />
+							<label class="theme-label" for="puppies">
+								<img src="img/puppies.jpg" class="theme-image" />
+								Rosy Brown
+							</label>
+
+							<input class="radio-button" value="guitar" type="radio" id="guitar" name="theme" />
+							<label class="theme-label" for="guitar">
+								<img src="img/guitar.jpg" class="theme-image" />
+								Lively Lavender
+							</label>
+
+							<input class="radio-button" value="nature" type="radio" id="nature" name="theme" />
+							<label class="theme-label" for="nature">
+								<img src="img/nature.jpg" class="theme-image" />
+								Medium Slate Blue
+							</label>
+
+							<input class="radio-button" value="car" type="radio" id="car" name="theme" />
+							<label class="theme-label" for="car">
+								<img src="img/car.jpg" class="theme-image" />
+								Dim Gray
+							</label>
+						</div>
+
+
+						<div class="gallery-container-row">
+							<input class="radio-button" value="cycling" type="radio" id="cycling" name="theme" />
+						  	<label class="theme-label"  for="cycling">
+						  		<img src="img/cycling.jpg" class="theme-image" />
+						  		Olive Green
+					  	  	</label>
+
+						    <input class="radio-button" value="elephant" type="radio" id="elephant" name="theme" />
+					   	    <label class="theme-label" for="elephant">
+								<img src="img/elephant.jpg" class="theme-image" />
+								Light Salmon
+						  	</label>
+
+
+						    <input class="radio-button" value="watch" type="radio" id="watch" name="theme" />
+						    <label class="theme-label" for="watch">
+								<img src="img/watch.jpg" class="theme-image" />
+								Witchy Workspace
+						  	</label>
+
+							<input class="radio-button" value="diving" type="radio" id="diving" name="theme" />
+							<label class="theme-label" for="diving">
+								<img src="img/diving.jpg" class="theme-image" />
+								Navy
+							</label>
+						</div>
+					</div>
+				</form>
+
+				<div class="optional-settings">
+					<span class="optional-settings-title">Theme of Your Choice:</span>
+					<form class="background-image-url" id="background-image-url" action="#">
+						<input class="url-input" type="text" id="url-input" placeholder="Custom background url...">
+						<button type="submit" class="nameBtn">Link</button>
+						<button type="reset" class="nameBtn resetBtn" id="resetBtn">Reset</button>
+					</form>
+					<span class="optional-settings-detail">*To upload your own background, you must link directly to the image, and not a page containing the image. Please check <a href="https://sites.google.com/site/picasaresources/Home/Picasa-FAQ/google-photos-1/how-to/how-to-get-a-direct-link-to-an-image" target="_blank" >this resource</a> for more guide.</span>
+				</div>
+
+
+<!--    /* =================================. -->
+<!--                  covid awareness         -->
+<!--    ====================================*/-->
+				<span class="covid-awareness">COVID-19 Awareness:</span>
+				<div class="covid-container">
+					<p style="float: left; display: inline-block;"><img src="img/cov-19.jpg" height="70px" width="90px" ></p>
+					<p>
+        				<ul>
+        					<A HREF = "https://www.cdc.gov/coronavirus/2019-nCoV/index.html" target="_blank"  ><h3>Center for Disease Control</h3></A>
+       					</ul>
+        				<ul>
+        					<A HREF = "https://www.who.int/ar/emergencies/diseases/novel-coronavirus-2019-farsi/advice-for-public-farsi/q-a-coronaviruses-farsi" target="_blank"><h3>آگاهی درباره ویروس کرونا</h3></A>
+       	 				</ul>
+       	 				<ul>
+        					<A HREF = "https://www.canada.ca/en/public-health/services/diseases/coronavirus-disease-covid-19.html" target="_blank"><h3>Health Canada</h3></A>
+       	 				</ul>
+       					<ul>
+        					<A HREF = "https://www.who.int/emergencies/diseases/novel-coronavirus-2019" target="_blank"><h3>World Health Organization</h3></A>
+       		 			</ul>
+        			</p>
+      			</div>
+			</div>
+		</div>
+
+
+
+        <script src="main.js"></script>
+    </body>
+
+
+</html>
