@@ -1,0 +1,671 @@
+/* =================================
+
+CS50x project
+All Rights Reserved © 2020 Tooba Rahimnia
+
+================================= */
+
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html:before {
+	content: "";
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba(51, 51, 51, 0.2);
+}
+
+html {
+    background-size: cover;
+}
+
+body {
+	font-family: "Arial", cursive, sans-serif;
+	line-height: 1.6;
+	color: #FAEBD7;
+	position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+}
+
+a {
+    color: #FAEBD7;
+}
+
+p {
+	font-size: 1em;
+	margin-bottom: 2em;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+	list-style-type: none;
+}
+
+
+
+/* =================================
+           Settings Styles
+==================================== */
+.settings-wheel {
+    width: 30px;
+    height: 30px;
+    fill: #FAEBD7;
+    position: absolute;
+    border-style: outset;
+    top: 15px;
+    left: 20px;
+    transition: transform 1s;
+    z-index: 3;
+}
+
+.settings-open.settings-wheel {
+    transform: rotate(125deg);
+    transform-origin: 50% 50%;
+}
+
+
+.settings {
+    opacity: 0;
+    transition: opacity 1s;
+    pointer-events: none;
+    position: absolute;
+}
+
+.settings-open.settings {
+    opacity: 1;
+    position: fixed;
+    width: 450px;
+    height: 100vh;
+    background-color: rgba(51, 51, 51, 0.8);
+    pointer-events: initial;
+    z-index: 2;
+    overflow: auto;
+}
+
+.settings-container {
+    padding: 80px 0px 0px 30px;
+}
+
+/* =================================
+               time
+==================================== */
+.datetime {
+	position: absolute;
+	top: 15px;
+	right: 20px;
+	font-size: 15px;
+	/*font-weight: bold;*/
+	color: #FAEBD7;
+}
+
+
+/* =================================
+         covid awareness
+==================================== */
+covid-container {
+    display: flex;
+    flex-direction: row;
+}
+h3 {
+    position: relative;
+    vertical-align: middle;
+    top : 0px;
+    left: 15px;
+    font-size: 10px;
+
+
+}
+
+ul:hover h3 {
+    /*text-decoration: none;*/
+    color: #FF0000;
+}
+
+/* ======================
+         Name
+========================= */
+.name-form,
+.background-image-url {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.name-input,
+.url-input {
+    display: block;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 10px 10px 15px;
+    margin: 0px 5px;
+    font-size: 12px;
+    /*width: 300px;*/
+    height: 30px;
+}
+
+
+.name-input:hover,
+.url-input:hover {
+    outline: none;
+    box-shadow: 0 0 3px 3px #4D90FE;
+}
+
+
+.nameBtn {
+    display: block;
+    padding: 5px;
+    width: 50px;
+    height: 30px;
+    background: rgba(51, 51, 51, 0.8);
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+    /*transition: 0.3s;*/
+    border: none;
+    border-radius: 30px;
+    color: #ffffff;
+
+}
+
+.nameBtn:hover {
+    /*background: #434343;*/
+    letter-spacing: 1px;
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all 0.4s ease 0s;
+    background-color: rgba(51, 51, 51, 0.4);
+}
+
+
+
+/* ======================
+         Greeting
+========================= */
+.greeting-container {
+   display: flex;
+	flex-direction: column;
+	text-align: center;
+    align-items: center;
+	padding: 40px 0px 0px 0px;
+
+}
+
+.greeting-and-name {
+	font-size: 3em;
+}
+
+.greeting-and-name:hover {
+    text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all 0.4s ease 0s;
+}
+.compliment-container {
+    width: 800px;
+}
+
+/*compliment message*/
+.msgDiv {
+   font-size: 20px;
+   color: #FAEBD7;
+   left: 0;
+   line-height: 20px; /*space in between*/
+   margin-top: -100px;
+   text-align: center;
+   top: 35%; /*for the height*/
+   width: 100%; /*for being in middle*/
+   position: fixed;
+}
+
+
+
+/* ==========================
+       Theme Selection
+=============================*/
+.theme-label {
+    font-size: 10px;
+    text-align: center;
+}
+
+.select-theme {
+    display: block;
+    width: 280px;
+}
+
+.covid-awareness,
+.select-theme-title,
+.optional-settings-title {
+    font-size: 14px;
+    display: block;
+    font-weight: bold;
+    padding: 30px 0px 5px 0px;
+}
+
+.theme-image {
+    max-width: 80px;
+    margin: 5px;
+}
+
+
+input.radio-button {
+    visibility: hidden;
+    position: fixed;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+input[type="radio"]:checked + .theme-label .theme-image {
+    box-shadow: 0px 0px 2px 3px #4d97f5;
+}
+
+.gallery-container-permanent {
+    display: flex;
+    flex-direction: column;
+}
+
+.gallery-container-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.optional-settings {
+    padding: 15px 0px 0px;
+}
+
+
+/* =================================
+         Optional Settings
+====================================*/
+.optional-settings-detail {
+    font-size: 10px;
+    display: block;
+    width: 375px;
+    padding: 10px 0px 0px 0px;
+}
+
+.resetBtn {
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
+
+
+/* =================================
+        Standard Themes
+====================================*/
+
+  /*Sienna Theme*/
+.library .settings-open.settings,
+.library ul li,
+.library .addBtn,
+.library .resetBtn {
+    background: rgba(164, 72, 35, 0.8);
+}
+
+.library ul li:hover,
+.library .addBtn:hover,
+.library .resetBtn:hover {
+    background: rgba(164, 72, 35, 0.4);
+}
+
+
+  /*Light Sea Green Theme*/
+
+.newzealand .settings-open.settings,
+.newzealand ul li,
+.newzealand .addBtn,
+.neazealand .resetBtn {
+    background: rgba(95,158,160, 0.8);
+}
+
+.newzealand ul li:hover,
+.newzealand .addBtn:hover,
+.newzealand .resetBtn:hover {
+    background: rgba(95,158,160, 0.4);
+}
+
+
+
+    /*Yellow Theme*/
+
+.wave .settings-open.settings,
+.wave ul li,
+.wave .addBtn,
+.wave .resetBtn {
+    background: rgba(251, 206, 24, 0.7)
+}
+
+.wave ul li:hover,
+.wave .addBtn:hover,
+.wave .resetBtn:hover {
+    background: rgba(251, 206, 24, 0.4);
+}
+
+
+
+  /*Orange*/
+
+.fruit .settings-open.settings,
+.fruit ul li,
+.fruit .addBtn,
+.fruit .resetBtn {
+    background: rgba(244, 126, 43, 0.8);
+}
+
+.fruit ul li:hover,
+.fruit .addBtn:hover,
+.fruit .resetBtn:hover {
+    background: rgba(244, 126, 43, 0.4);
+}
+
+
+
+       /*Rosy Brown Theme*/
+
+.puppies .settings-open.settings,
+.puppies ul li,
+.puppies .addBtn,
+.puppies .resetBtn  {
+    background: rgba(197, 142, 144, 0.8);
+}
+
+.puppies ul li:hover,
+.puppies .addBtn:hover,
+.puppies .resetBtn:hover {
+    background: rgba(197, 142, 144, 0.4);
+}
+
+
+  /*Lively Lavender Theme*/
+
+.guitar .settings-open.settings,
+.guitar ul li,
+.guitar .addBtn,
+.guitar .resetBtn {
+    background: rgba(139, 103, 152, 0.8);
+}
+
+.guitar ul li:hover,
+.guitar .addBtn:hover,
+.guitar .resetBtn:hover {
+    background: rgba(139, 103, 152, 0.4);
+}
+
+
+         /*Medium Slate Blue Theme*/
+
+.nature .settings-open.settings,
+.nature ul li,
+.nature .addBtn,
+.nature .resetBtn {
+    background: rgba(44, 75, 213, 0.5);
+}
+
+.nature ul li:hover,
+.nature .addBtn:hover,
+.nature .resetBtn:hover {
+    background: rgba(197, 142, 144, 0.3);
+}
+
+
+
+       /*Dim Gray Theme*/
+
+.car .settings-open.settings,
+.car ul li,
+.car .addBtn,
+.car .resetBtn {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.car ul li:hover,
+.car .addBtn:hover,
+.car .resetBtn:hover {
+    background: rgba(83, 0, 0, 0.4);
+}
+
+
+          /*Olive Green Theme*/
+
+.cycling .settings-open.settings,
+.cycling ul li,
+.cycling .addBtn,
+.cycling .resetBtn {
+    background: rgba(0, 83, 0, 0.5);
+}
+
+.cycling ul li:hover,
+.cycling .addBtn:hover
+.cycling .resetBtn:hover {
+    background: rgba(0, 126, 227, 0.2);
+}
+
+
+          /*Light Salmon Theme*/
+
+.elephant .settings-open.settings,
+.elephant ul li,
+.elephant .addBtn,
+.elephant .resetBtn {
+    background: rgba(255,160,122, 0.8);
+}
+
+.elephant ul li:hover,
+.elephant .addBtn:hover,
+.elephant .resetBtn:hover {
+    background: rgba(255,218,185, 0.4);
+}
+
+
+          /*Witchy Workspace Theme*/
+
+.watch .settings-open.settings,
+.watch ul li,
+.watch .addBtn,
+.watch .resetBtn {
+    background: rgba(99, 46, 40, 0.8);
+}
+
+.watch ul li:hover,
+.watch .addBtn:hover,
+.watch .resetBtn:hover {
+    background: rgba(99, 46, 40, 0.4);
+}
+
+
+
+        /*Navy Theme*/
+
+.diving .settings-open.settings,
+.diving ul li,
+.diving .addBtn,
+.diving .resetBtn  {
+    background: rgba(0, 88, 149, 0.8);
+}
+
+.diving ul li:hover,
+.diving .addBtn:hover,
+.diving .resetBtn:hover {
+    background: rgba(0, 88, 149, 0.4);
+}
+
+
+
+.update-notification {
+    display: none;
+    position: absolute;
+    flex-direction: row;
+    top: 16px;
+    left: 70px;
+    background-color: #333;
+    border-radius: 10px;
+    padding: 5px 8px;
+}
+
+.update-notification-shown {
+    display: flex;
+}
+
+update-notification:before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 20px;
+    transform: skewX(-45deg);
+    bottom: 0;
+    z-index: -1;
+}
+/* =================================
+       To Do List Styles
+==================================== */
+/*left and right*/
+.to-do-list {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+    flex: 1 1 auto;
+}
+
+/*make it look like a table*/
+ul li {
+	width: 600px;
+    cursor: pointer;
+    position: relative;
+    padding: 14px 12px 14px 50px;
+    margin: 0px 15px 0px 0px;
+    background: rgba(102, 26, 97, 0.8);
+    font-size: 16px;
+    transition: 0.2s;
+
+    /*Make the list items unselectable*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+ul li:hover {
+    background-color: rgba(102, 26, 97, 0.4);
+}
+
+/*cross line*/
+ul li.checked {
+    text-decoration: line-through;
+}
+
+/*check mark*/
+ul li.checked:before {
+
+    content: '✔';
+      position: absolute;
+      left:10px;
+      top: 10px;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      border: 1px inset #aaa;
+      border-color: #f8f8f8;
+      border-radius: 50%;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,.3)
+
+}
+
+/*close*/
+.close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 15px 20px;
+}
+
+/*up and down*/
+.to-do-list-header {
+    padding: 100px 40px 10px 40px;
+    text-align: center;
+
+}
+
+/*no difference i noticed*/
+.to-do-list-header:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.task-list {
+    height: 260px;
+    flex: 1 1 auto;
+    overflow: auto;
+}
+
+
+/*add bar*/
+.input-and-add {
+	margin: 30px 15px 30px 0px;
+}
+
+/*add bar*/
+.input-and-add-form {
+    display: flex;
+}
+
+/*add bar*/
+.task-input {
+    display: block;
+    width: 485px;
+    height: 45px;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 10px 10px 25px;
+    margin-right: 15px;
+    font-size: 16px;
+}
+
+
+/*add button design*/
+.addBtn {
+	color: #fff !important;
+    text-transform: uppercase;
+    text-align: center;
+
+    /*text-decoration: none;*/
+    /*background: #ed3330;*/
+    padding: 20px;
+    /*border-radius: 5px;*/
+    display: inline-block;
+    border: none;
+    transition: all 0.1s ease 0s;
+     width: 80px;
+    height: 45px;
+    border-radius: 30px;
+
+}
+
+.addBtn:hover {
+    background: #434343;
+    letter-spacing: 1px;
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all 0.4s ease 0s;
+}
+
+
+
