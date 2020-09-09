@@ -1,4 +1,4 @@
-Daily Dash is a Google Chrome Extension that can be used by people with different range of age.
+Daily Dash is a Google Chrome Extension that can be used by people at any age.
 
 The followings explain the overal functionality of the dashboard in brief:
 
